@@ -209,15 +209,15 @@ td.date-cell.is-weekend { background: #fafaf8; }
 
 <script>
 const ROOMS = [
-  { key:'스탠다드 9평, 2인, 트윈, 별장1',   short:'별장1',      type:'스탠다드 9평',    bg:'#c8dff7', text:'#1a3a5c' },
-  { key:'스탠다드 9평, 2인, 트윈, 별장2',   short:'별장2',      type:'스탠다드 9평',    bg:'#b8ead4', text:'#134d31' },
-  { key:'스탠다드 9평, 2인, 트윈, 수익1',   short:'수익1',      type:'스탠다드 9평',    bg:'#fde8c8', text:'#5c3500' },
-  { key:'디럭스 15평, 2인/최대3',            short:'디럭스',     type:'디럭스 15평',     bg:'#c8f0ee', text:'#0a3d3d' },
-  { key:'투룸패밀리 14평, 4인, 트윈, 별장1',short:'별장1',      type:'투룸패밀리 14평', bg:'#dfd8f7', text:'#2d1f6b' },
-  { key:'투룸패밀리 14평, 4인, 트윈, 수익1',short:'수익1',      type:'투룸패밀리 14평', bg:'#fcd9e0', text:'#5c1028' },
-  { key:'투룸패밀리 14평, 4인, 트윈, 수익2',short:'수익2',      type:'투룸패밀리 14평', bg:'#fce4d4', text:'#5c2200' },
-  { key:'투룸패밀리 14평, 4인, 더블, 수익1',short:'더블·수익1', type:'투룸패밀리 14평', bg:'#f2d6f5', text:'#4a0a4a' },
-  { key:'코너스위트 19평, 4인/최대6',        short:'코너스위트', type:'코너스위트 19평', bg:'#fffbc4', text:'#4a4200' },
+  { key:'스탠다드 9평, 2인, 트윈, 별장1',   short:'2인, 별장1',      type:'스탠다드 9평, 트윈',    bg:'#c8dff7', text:'#1a3a5c' },
+  { key:'스탠다드 9평, 2인, 트윈, 별장2',   short:'2인, 별장2',      type:'스탠다드 9평, 트윈',    bg:'#b8ead4', text:'#134d31' },
+  { key:'스탠다드 9평, 2인, 트윈, 수익1',   short:'2인, 수익1',      type:'스탠다드 9평, 트윈',    bg:'#fde8c8', text:'#5c3500' },
+  { key:'디럭스 15평, 2인/최대3',            short:'2인/최대3인, 수익',     type:'디럭스 15평',     bg:'#c8f0ee', text:'#0a3d3d' },
+  { key:'투룸패밀리 14평, 4인, 트윈, 별장1',short:'4인, 별장1',      type:'투룸패밀리 14평, 트윈', bg:'#dfd8f7', text:'#2d1f6b' },
+  { key:'투룸패밀리 14평, 4인, 트윈, 수익1',short:'4인, 수익1',      type:'투룸패밀리 14평, 트윈', bg:'#fcd9e0', text:'#5c1028' },
+  { key:'투룸패밀리 14평, 4인, 트윈, 수익2',short:'4인, 수익2',      type:'투룸패밀리 14평, 트윈', bg:'#fce4d4', text:'#5c2200' },
+  { key:'투룸패밀리 14평, 4인, 더블, 수익1',short:'4인, 수익1', type:'투룸패밀리 14평, 더블', bg:'#f2d6f5', text:'#4a0a4a' },
+  { key:'코너스위트 19평, 4인/최대6',        short:'4인/최대6인, 수익', type:'코너스위트 19평', bg:'#fffbc4', text:'#4a4200' },
 ];
 const ROOM_MAP = {};
 ROOMS.forEach(r => ROOM_MAP[r.key] = r);
