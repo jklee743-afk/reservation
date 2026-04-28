@@ -99,17 +99,17 @@ tbody tr:hover td.date-cell:not(.booked-cell) { background: #faf9f6 !important; 
 
 td {
   padding: 0; border-right: 1px solid var(--border);
-  vertical-align: middle; height: 36px;
+  vertical-align: middle; height: 44px;
 }
 td:last-child { border-right: none; }
 
 td.room-name {
-  padding: 0 10px 0 14px; font-size: 12px; font-weight: 500;
-  color: var(--text-primary); white-space: nowrap;
+  padding: 0 10px 0 14px; font-size: 11px; font-weight: 400;
+  color: var(--text-muted); white-space: nowrap;
   background: var(--surface); position: sticky; left: 0; z-index: 2;
   border-right: 2px solid var(--border-strong);
 }
-.room-type-label { font-size: 10px; font-weight: 300; color: var(--text-muted); display: block; }
+.room-type-label { font-size: 15px; font-weight: 600; color: var(--text-primary); display: block; }
 
 td.date-cell { text-align: center; }
 td.date-cell.is-today   { background: #f3f2ee; }
@@ -117,7 +117,7 @@ td.date-cell.is-weekend { background: #fafaf8; }
 
 .cell-dot {
   display: flex; align-items: center; justify-content: center;
-  height: 36px; font-size: 11px; font-weight: 600;
+  height: 44px; font-size: 11px; font-weight: 600;
 }
 
 .summary-bar {
@@ -387,7 +387,7 @@ function renderTable(){
   ROOMS.forEach(room=>{
     const tr=document.createElement('tr');
     const td0=document.createElement('td'); td0.className='room-name';
-    td0.innerHTML=`<span>${room.short}</span><span class="room-type-label">${room.type}</span>`;
+    td0.innerHTML=`<span class="room-type-label">${room.type}</span><span>${room.short}</span>`;
     tr.appendChild(td0);
 
     days.forEach(d=>{
