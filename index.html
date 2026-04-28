@@ -3,165 +3,79 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>객실 예약현황</title>
+<title>제주 오션스위츠 객실 예약현황</title>
 <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;600&display=swap" rel="stylesheet">
 <style>
 :root {
-  --bg: #f7f6f2;
-  --surface: #ffffff;
-  --border: #e8e5de;
-  --border-strong: #ccc8be;
-  --text-primary: #1a1a1a;
-  --text-secondary: #6b6860;
-  --text-muted: #a09d97;
-  --header-bg: #1a1a1a;
-  --header-text: #ffffff;
+  --bg: #f7f6f2; --surface: #ffffff; --border: #e8e5de;
+  --border-strong: #ccc8be; --text-primary: #1a1a1a;
+  --text-secondary: #6b6860; --text-muted: #a09d97;
+  --header-bg: #1a1a1a; --header-text: #ffffff;
 }
 * { box-sizing: border-box; margin: 0; padding: 0; }
-body {
-  font-family: 'Noto Sans KR', sans-serif;
-  background: var(--bg);
-  color: var(--text-primary);
-  font-size: 13px;
-  line-height: 1.5;
-  padding: 24px 20px 48px;
-}
-
-.page-header {
-  display: flex; align-items: flex-end;
-  justify-content: space-between;
-  margin-bottom: 18px; flex-wrap: wrap; gap: 12px;
-}
+body { font-family: 'Noto Sans KR', sans-serif; background: var(--bg); color: var(--text-primary); font-size: 13px; line-height: 1.5; padding: 24px 20px 48px; }
+.page-header { display: flex; align-items: flex-end; justify-content: space-between; margin-bottom: 18px; flex-wrap: wrap; gap: 12px; }
 .page-title { font-size: 20px; font-weight: 600; letter-spacing: -0.5px; }
-.page-sub   { font-size: 12px; color: var(--text-muted); font-weight: 300; margin-top: 2px; }
-.controls   { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; }
-
-.month-nav {
-  display: flex; align-items: center;
-  border: 1px solid var(--border-strong);
-  border-radius: 8px; overflow: hidden;
-  background: var(--surface);
-}
-.month-btn {
-  background: none; border: none; padding: 7px 13px;
-  cursor: pointer; font-size: 13px; color: var(--text-primary);
-  font-family: inherit; transition: background 0.12s;
-}
+.page-sub { font-size: 12px; color: var(--text-muted); font-weight: 300; margin-top: 2px; }
+.controls { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; }
+.month-nav { display: flex; align-items: center; border: 1px solid var(--border-strong); border-radius: 8px; overflow: hidden; background: var(--surface); }
+.month-btn { background: none; border: none; padding: 7px 13px; cursor: pointer; font-size: 13px; color: var(--text-primary); font-family: inherit; transition: background 0.12s; }
 .month-btn:hover { background: var(--bg); }
-.month-display {
-  font-size: 13px; font-weight: 500;
-  padding: 7px 14px; min-width: 130px; text-align: center;
-  border-left: 1px solid var(--border); border-right: 1px solid var(--border);
-}
-.today-btn {
-  background: var(--surface); border: 1px solid var(--border-strong);
-  border-radius: 8px; padding: 7px 14px; cursor: pointer;
-  font-size: 12px; color: var(--text-secondary);
-  font-family: inherit; transition: background 0.12s;
-}
+.month-display { font-size: 13px; font-weight: 500; padding: 7px 14px; min-width: 130px; text-align: center; border-left: 1px solid var(--border); border-right: 1px solid var(--border); }
+.today-btn { background: var(--surface); border: 1px solid var(--border-strong); border-radius: 8px; padding: 7px 14px; cursor: pointer; font-size: 12px; color: var(--text-secondary); font-family: inherit; transition: background 0.12s; }
 .today-btn:hover { background: var(--bg); }
-
-.legend {
-  display: flex; flex-wrap: wrap; gap: 6px 14px;
-  margin-bottom: 14px; padding: 10px 14px;
-  background: var(--surface); border: 1px solid var(--border); border-radius: 8px;
-}
+.legend { display: flex; flex-wrap: wrap; gap: 6px 14px; margin-bottom: 14px; padding: 10px 14px; background: var(--surface); border: 1px solid var(--border); border-radius: 8px; }
 .leg { display: flex; align-items: center; gap: 6px; font-size: 11px; color: var(--text-secondary); }
 .leg-dot { width: 12px; height: 12px; border-radius: 3px; flex-shrink: 0; }
-
-.table-wrap {
-  background: var(--surface); border: 1px solid var(--border);
-  border-radius: 10px; overflow: hidden; overflow-x: auto;
-}
+.table-wrap { background: var(--surface); border: 1px solid var(--border); border-radius: 10px; overflow: hidden; overflow-x: auto; }
 table { border-collapse: collapse; width: 100%; min-width: 600px; }
-
-thead th {
-  background: var(--header-bg); color: var(--header-text);
-  font-weight: 400; font-size: 11px; padding: 8px 6px;
-  text-align: center; border-right: 1px solid rgba(255,255,255,0.07);
-  white-space: nowrap;
-}
+thead th { background: var(--header-bg); color: var(--header-text); font-weight: 400; font-size: 11px; padding: 8px 6px; text-align: center; border-right: 1px solid rgba(255,255,255,0.07); white-space: nowrap; }
 thead th.room-col { text-align: left; padding-left: 14px; min-width: 155px; font-size: 12px; }
 thead th.today-col { background: #383838; }
 thead th.sat-col { color: #88aaff; }
 thead th.sun-col { color: #ff9090; }
-
-tr.month-row th {
-  font-size: 10px; font-weight: 500; letter-spacing: 0.4px;
-  background: #2c2c2c; color: rgba(255,255,255,0.55);
-  padding: 5px 6px; border-right: 1px solid rgba(255,255,255,0.05);
-}
+tr.month-row th { font-size: 10px; font-weight: 500; letter-spacing: 0.4px; background: #2c2c2c; color: rgba(255,255,255,0.55); padding: 5px 6px; border-right: 1px solid rgba(255,255,255,0.05); }
 tr.month-row th.month-label-cell { color: rgba(255,255,255,0.85); }
-
 tbody tr { border-bottom: 1px solid var(--border); }
 tbody tr:last-child { border-bottom: none; }
 tbody tr:hover td.date-cell:not(.booked-cell) { background: #faf9f6 !important; }
-
-td {
-  padding: 0; border-right: 1px solid var(--border);
-  vertical-align: middle; height: 44px;
-}
+td { padding: 0; border-right: 1px solid var(--border); vertical-align: middle; height: 44px; }
 td:last-child { border-right: none; }
-
-td.room-name {
-  padding: 0 10px 0 14px; font-size: 11px; font-weight: 400;
-  color: var(--text-muted); white-space: nowrap;
-  background: var(--surface); position: sticky; left: 0; z-index: 2;
-  border-right: 2px solid var(--border-strong);
-}
+td.room-name { padding: 0 10px 0 14px; font-size: 11px; font-weight: 400; color: var(--text-muted); white-space: nowrap; background: var(--surface); position: sticky; left: 0; z-index: 2; border-right: 2px solid var(--border-strong); }
 .room-type-label { font-size: 15px; font-weight: 600; color: var(--text-primary); display: block; }
-
 td.date-cell { text-align: center; }
-td.date-cell.is-today   { background: #f3f2ee; }
+td.date-cell.is-today { background: #f3f2ee; }
 td.date-cell.is-weekend { background: #fafaf8; }
-
-.cell-dot {
-  display: flex; align-items: center; justify-content: center;
-  height: 44px; font-size: 11px; font-weight: 600;
-}
-
-.summary-bar {
-  margin-top: 10px; font-size: 11px; color: var(--text-muted);
-  display: flex; gap: 16px; flex-wrap: wrap;
-}
+.cell-dot { display: flex; align-items: center; justify-content: center; height: 44px; font-size: 11px; font-weight: 600; }
+.summary-bar { margin-top: 10px; font-size: 11px; color: var(--text-muted); display: flex; gap: 16px; flex-wrap: wrap; }
 .summary-val { font-weight: 500; color: var(--text-secondary); }
 
 /* Paste section */
-.paste-section {
-  margin-top: 36px; border-top: 1px dashed var(--border-strong); padding-top: 22px;
-}
-.paste-section-title {
-  font-size: 11px; font-weight: 500; color: var(--text-muted);
-  margin-bottom: 10px; letter-spacing: 0.3px;
-}
-.paste-panel {
-  background: var(--surface); border: 1px solid var(--border);
-  border-radius: 10px; padding: 14px 16px;
-  display: flex; align-items: flex-start; gap: 12px; flex-wrap: wrap;
-}
-.paste-label { font-size: 11px; color: var(--text-muted); margin-bottom: 6px; }
-.paste-textarea {
-  flex: 1; min-width: 200px; min-height: 58px; max-height: 110px;
-  border: 1px solid var(--border); border-radius: 6px; padding: 8px 10px;
-  font-size: 11px; font-family: monospace; color: var(--text-secondary);
-  background: var(--bg); resize: vertical;
-}
+.paste-section { margin-top: 36px; border-top: 1px dashed var(--border-strong); padding-top: 22px; }
+.paste-section-title { font-size: 12px; font-weight: 600; color: var(--text-secondary); margin-bottom: 10px; letter-spacing: 0.3px; }
+.paste-panel { background: var(--surface); border: 1px solid var(--border); border-radius: 10px; padding: 14px 16px; display: flex; align-items: flex-start; gap: 12px; flex-wrap: wrap; }
+.paste-label { font-size: 11px; color: var(--text-muted); margin-bottom: 6px; line-height: 1.6; }
+.paste-textarea { flex: 1; min-width: 200px; min-height: 58px; max-height: 110px; border: 1px solid var(--border); border-radius: 6px; padding: 8px 10px; font-size: 11px; font-family: monospace; color: var(--text-secondary); background: var(--bg); resize: vertical; }
 .paste-textarea:focus { outline: 2px solid #1a1a1a; border-color: transparent; }
 .paste-actions { display: flex; flex-direction: column; gap: 6px; }
-.apply-btn {
-  background: var(--header-bg); color: var(--header-text);
-  border: none; border-radius: 6px; padding: 8px 16px; cursor: pointer;
-  font-size: 12px; font-family: inherit; font-weight: 500;
-  white-space: nowrap; transition: opacity 0.12s;
-}
+.apply-btn { background: var(--header-bg); color: var(--header-text); border: none; border-radius: 6px; padding: 8px 16px; cursor: pointer; font-size: 12px; font-family: inherit; font-weight: 500; white-space: nowrap; transition: opacity 0.12s; }
 .apply-btn:hover { opacity: 0.78; }
-.reset-btn {
-  background: none; color: var(--text-muted); border: 1px solid var(--border);
-  border-radius: 6px; padding: 7px 16px; cursor: pointer;
-  font-size: 12px; font-family: inherit; white-space: nowrap; transition: background 0.12s;
-}
+.reset-btn { background: none; color: var(--text-muted); border: 1px solid var(--border); border-radius: 6px; padding: 7px 16px; cursor: pointer; font-size: 12px; font-family: inherit; white-space: nowrap; transition: background 0.12s; }
 .reset-btn:hover { background: var(--bg); }
 .paste-status { font-size: 11px; color: var(--text-muted); margin-top: 5px; min-height: 16px; }
+
+/* Download guide */
+.download-guide { display: none; margin-top: 14px; background: #f0f7ff; border: 1.5px solid #4285f4; border-radius: 10px; padding: 16px 18px; }
+.download-guide.show { display: block; }
+.dg-title { font-size: 13px; font-weight: 600; color: #1a3a5c; margin-bottom: 12px; }
+.dg-step { font-size: 12px; color: #333; padding: 4px 0 4px 20px; position: relative; line-height: 1.7; }
+.dg-step b { color: #1a73e8; }
+.dg-step::before { content: attr(data-n); position: absolute; left: 0; font-weight: 700; color: #1a73e8; }
+.dl-btn { display: inline-flex; align-items: center; gap: 6px; margin: 12px 0 6px; background: #1a73e8; color: #fff; border: none; border-radius: 7px; padding: 10px 20px; cursor: pointer; font-size: 13px; font-family: inherit; font-weight: 600; transition: opacity 0.12s; }
+.dl-btn:hover { opacity: 0.85; }
+.gh-btn { display: inline-flex; align-items: center; gap: 6px; background: #24292f; color: #fff; text-decoration: none; border-radius: 7px; padding: 9px 18px; font-size: 12px; font-weight: 500; font-family: inherit; transition: opacity 0.12s; }
+.gh-btn:hover { opacity: 0.85; }
+.btn-row { display: flex; gap: 10px; align-items: center; flex-wrap: wrap; margin-top: 4px; }
 </style>
 </head>
 <body>
@@ -196,7 +110,11 @@ td.date-cell.is-weekend { background: #fafaf8; }
   <div class="paste-section-title">▸ 예약 데이터 업데이트 (담당자 전용)</div>
   <div class="paste-panel">
     <div style="flex:1;min-width:180px">
-      <div class="paste-label">엑셀 예약리스트 시트 전체 선택(Ctrl+A) → 복사(Ctrl+C) → 아래 붙여넣기(Ctrl+V) → 적용</div>
+      <div class="paste-label">
+        ① 엑셀 예약리스트 시트 열기 → <b>Ctrl+A</b> → <b>Ctrl+C</b><br>
+        ② 아래 붙여넣기(<b>Ctrl+V</b>) → <b>적용하기</b> 클릭<br>
+        ③ 자동으로 index.html 다운로드 → GitHub에 업로드
+      </div>
       <textarea class="paste-textarea" id="pasteArea" placeholder="여기에 붙여넣기..."></textarea>
       <div class="paste-status" id="pasteStatus"></div>
     </div>
@@ -205,19 +123,35 @@ td.date-cell.is-weekend { background: #fafaf8; }
       <button class="reset-btn" onclick="resetData()">초기화</button>
     </div>
   </div>
+
+  <!-- 적용 후 표시되는 다운로드 & GitHub 안내 -->
+  <div class="download-guide" id="downloadGuide">
+    <div class="dg-title">✅ 적용 완료! 이제 GitHub에 올려주세요 (1분)</div>
+    <div class="btn-row">
+      <button class="dl-btn" onclick="downloadHTML()">⬇ index.html 다운로드</button>
+      <a class="gh-btn" href="https://github.com/jklee743-afk/reservation/blob/main/index.html" target="_blank">GitHub 열기 →</a>
+    </div>
+    <div class="dg-step" data-n="1">GitHub 페이지에서 <b>index.html</b> 클릭</div>
+    <div class="dg-step" data-n="2">오른쪽 상단 <b>✏️ 연필 아이콘</b> 클릭</div>
+    <div class="dg-step" data-n="3">편집창 전체 선택 <b>Ctrl+A</b> → 삭제 <b>Delete</b></div>
+    <div class="dg-step" data-n="4">다운로드한 파일을 메모장으로 열어 <b>Ctrl+A → Ctrl+C</b> 복사</div>
+    <div class="dg-step" data-n="5">GitHub 편집창에 <b>Ctrl+V</b> 붙여넣기</div>
+    <div class="dg-step" data-n="6">오른쪽 상단 초록색 <b>Commit changes</b> 클릭 → 한 번 더 클릭</div>
+    <div class="dg-step" data-n="7">1~2분 후 사이트 새로고침 (<b>Ctrl+Shift+R</b>) → 완료!</div>
+  </div>
 </div>
 
 <script>
 const ROOMS = [
-  { key:'스탠다드 9평, 2인, 트윈, 별장1',   short:'2인, 별장1',      type:'스탠다드 9평, 트윈',    bg:'#c8dff7', text:'#1a3a5c' },
-  { key:'스탠다드 9평, 2인, 트윈, 별장2',   short:'2인, 별장2',      type:'스탠다드 9평, 트윈',    bg:'#b8ead4', text:'#134d31' },
-  { key:'스탠다드 9평, 2인, 트윈, 수익1',   short:'2인, 수익1',      type:'스탠다드 9평, 트윈',    bg:'#fde8c8', text:'#5c3500' },
-  { key:'디럭스 15평, 2인/최대3',            short:'2인/최대3인, 수익',     type:'디럭스 15평',     bg:'#c8f0ee', text:'#0a3d3d' },
-  { key:'투룸패밀리 14평, 4인, 트윈, 별장1',short:'4인, 별장1',      type:'투룸패밀리 14평, 트윈', bg:'#dfd8f7', text:'#2d1f6b' },
-  { key:'투룸패밀리 14평, 4인, 트윈, 수익1',short:'4인, 수익1',      type:'투룸패밀리 14평, 트윈', bg:'#fcd9e0', text:'#5c1028' },
-  { key:'투룸패밀리 14평, 4인, 트윈, 수익2',short:'4인, 수익2',      type:'투룸패밀리 14평, 트윈', bg:'#fce4d4', text:'#5c2200' },
-  { key:'투룸패밀리 14평, 4인, 더블, 수익1',short:'4인, 수익1', type:'투룸패밀리 14평, 더블', bg:'#f2d6f5', text:'#4a0a4a' },
-  { key:'코너스위트 19평, 4인/최대6',        short:'4인/최대6인, 수익', type:'코너스위트 19평', bg:'#fffbc4', text:'#4a4200' },
+  { key:'스탠다드 9평, 2인, 트윈, 별장1',   short:'별장1',      type:'스탠다드 9평',    bg:'#c8dff7', text:'#1a3a5c' },
+  { key:'스탠다드 9평, 2인, 트윈, 별장2',   short:'별장2',      type:'스탠다드 9평',    bg:'#b8ead4', text:'#134d31' },
+  { key:'스탠다드 9평, 2인, 트윈, 수익1',   short:'수익1',      type:'스탠다드 9평',    bg:'#fde8c8', text:'#5c3500' },
+  { key:'디럭스 15평, 2인/최대3',            short:'디럭스',     type:'디럭스 15평',     bg:'#c8f0ee', text:'#0a3d3d' },
+  { key:'투룸패밀리 14평, 4인, 트윈, 별장1',short:'별장1',      type:'투룸패밀리 14평', bg:'#dfd8f7', text:'#2d1f6b' },
+  { key:'투룸패밀리 14평, 4인, 트윈, 수익1',short:'수익1',      type:'투룸패밀리 14평', bg:'#fcd9e0', text:'#5c1028' },
+  { key:'투룸패밀리 14평, 4인, 트윈, 수익2',short:'수익2',      type:'투룸패밀리 14평', bg:'#fce4d4', text:'#5c2200' },
+  { key:'투룸패밀리 14평, 4인, 더블, 수익1',short:'더블·수익1', type:'투룸패밀리 14평', bg:'#f2d6f5', text:'#4a0a4a' },
+  { key:'코너스위트 19평, 4인/최대6',        short:'코너스위트', type:'코너스위트 19평', bg:'#fffbc4', text:'#4a4200' },
 ];
 const ROOM_MAP = {};
 ROOMS.forEach(r => ROOM_MAP[r.key] = r);
@@ -269,156 +203,73 @@ let bookings = [
   {room:'투룸패밀리 14평, 4인, 트윈, 별장1',checkin:'2026-11-03',checkout:'2026-11-06'},
 ];
 
-/* helpers */
 const today = new Date(); today.setHours(0,0,0,0);
 const DAYS_SHOW = 62;
-let viewOffset = 0; // days offset from today
+let viewOffset = 0;
 
-function dateStr(d) {
-  return d.getFullYear()+'-'+String(d.getMonth()+1).padStart(2,'0')+'-'+String(d.getDate()).padStart(2,'0');
-}
+function dateStr(d){ return d.getFullYear()+'-'+String(d.getMonth()+1).padStart(2,'0')+'-'+String(d.getDate()).padStart(2,'0'); }
 function addDays(d,n){ const r=new Date(d); r.setDate(r.getDate()+n); return r; }
 function parseDate(s){ if(!s)return null; const p=s.split('-'); return p.length===3?new Date(+p[0],+p[1]-1,+p[2]):null; }
-function excelSerial(n){
-  if(isNaN(n)||n<40000)return null;
-  const d=new Date((n-25569)*86400000);
-  return dateStr(new Date(d.getUTCFullYear(),d.getUTCMonth(),d.getUTCDate()));
-}
+function excelSerial(n){ if(isNaN(n)||n<40000)return null; const d=new Date((n-25569)*86400000); return dateStr(new Date(d.getUTCFullYear(),d.getUTCMonth(),d.getUTCDate())); }
 
-/* view: always starts from today + viewOffset days */
-function getViewStart(){ return addDays(today, viewOffset); }
-function getViewDays(){
-  const start=getViewStart(); const days=[];
-  for(let i=0;i<DAYS_SHOW;i++) days.push(addDays(start,i));
-  return days;
-}
+function getViewDays(){ const start=addDays(today,viewOffset); const days=[]; for(let i=0;i<DAYS_SHOW;i++) days.push(addDays(start,i)); return days; }
 
 function buildBookingSet(){
-  const todayStr=dateStr(today);
-  const set={};
+  const ts=dateStr(today); const set={};
   bookings.forEach(b=>{
-    if(b.checkout<=todayStr) return;
+    if(b.checkout<=ts) return;
     const ci=parseDate(b.checkin); const co=parseDate(b.checkout);
     if(!ci||!co||!b.room) return;
     const r=ROOM_MAP[b.room]; if(!r) return;
     let d=new Date(ci);
-    while(d<co){
-      const ds=dateStr(d);
-      if(ds>=todayStr) set[b.room+'|'+ds]={bg:r.bg,text:r.text};
-      d=addDays(d,1);
-    }
+    while(d<co){ const ds=dateStr(d); if(ds>=ts) set[b.room+'|'+ds]={bg:r.bg,text:r.text}; d=addDays(d,1); }
   });
   return set;
 }
 
 function renderLegend(){
-  const todayStr=dateStr(today);
-  const used=new Set(bookings.filter(b=>b.checkout>todayStr).map(b=>b.room));
+  const ts=dateStr(today);
+  const used=new Set(bookings.filter(b=>b.checkout>ts).map(b=>b.room));
   const leg=document.getElementById('legend'); leg.innerHTML='';
-  ROOMS.forEach(r=>{
-    if(!used.has(r.key)) return;
-    const div=document.createElement('div'); div.className='leg';
-    div.innerHTML=`<div class="leg-dot" style="background:${r.bg};border:1px solid ${r.text}33"></div><span>${r.type} · ${r.short}</span>`;
-    leg.appendChild(div);
-  });
+  ROOMS.forEach(r=>{ if(!used.has(r.key)) return; const div=document.createElement('div'); div.className='leg'; div.innerHTML=`<div class="leg-dot" style="background:${r.bg};border:1px solid ${r.text}33"></div><span>${r.type} · ${r.short}</span>`; leg.appendChild(div); });
 }
 
 function renderTable(){
-  const days=getViewDays();
-  const booked=buildBookingSet();
-  const todayStr=dateStr(today);
-  const last=days[days.length-1];
-
-  // range label
+  const days=getViewDays(); const booked=buildBookingSet(); const ts=dateStr(today); const last=days[days.length-1];
   const fmt=d=>`${d.getMonth()+1}/${d.getDate()}`;
   document.getElementById('rangeLabel').textContent=`${fmt(days[0])} — ${fmt(last)}`;
-
-  // today label
   const DOW=['일','월','화','수','목','금','토'];
-  document.getElementById('todayLabel').textContent=
-    `오늘: ${today.getFullYear()}년 ${today.getMonth()+1}월 ${today.getDate()}일 (${DOW[today.getDay()]}) 기준`;
-
-  // month spans
+  document.getElementById('todayLabel').textContent=`오늘: ${today.getFullYear()}년 ${today.getMonth()+1}월 ${today.getDate()}일 (${DOW[today.getDay()]}) 기준`;
   const monthSpans=[]; let cur=null;
-  days.forEach(d=>{
-    const key=d.getFullYear()+'-'+(d.getMonth()+1);
-    if(!cur||cur.key!==key){ cur={key,label:`${d.getFullYear()}년 ${d.getMonth()+1}월`,count:1}; monthSpans.push(cur); }
-    else cur.count++;
-  });
-
+  days.forEach(d=>{ const key=d.getFullYear()+'-'+(d.getMonth()+1); if(!cur||cur.key!==key){ cur={key,label:`${d.getFullYear()}년 ${d.getMonth()+1}월`,count:1}; monthSpans.push(cur); } else cur.count++; });
   const thead=document.getElementById('tableHead'); thead.innerHTML='';
-
-  // row1: month
   const mRow=document.createElement('tr'); mRow.className='month-row';
   mRow.appendChild(Object.assign(document.createElement('th'),{className:'room-col'}));
-  monthSpans.forEach(ms=>{
-    const th=document.createElement('th'); th.colSpan=ms.count; th.className='month-label-cell'; th.textContent=ms.label; mRow.appendChild(th);
-  });
+  monthSpans.forEach(ms=>{ const th=document.createElement('th'); th.colSpan=ms.count; th.className='month-label-cell'; th.textContent=ms.label; mRow.appendChild(th); });
   thead.appendChild(mRow);
-
-  // row2: day numbers
   const dRow=document.createElement('tr');
   const dTh0=document.createElement('th'); dTh0.className='room-col'; dTh0.textContent='객실'; dRow.appendChild(dTh0);
-  days.forEach(d=>{
-    const th=document.createElement('th'); th.textContent=d.getDate();
-    const ds=dateStr(d); const dow=d.getDay();
-    if(ds===todayStr) th.classList.add('today-col');
-    if(dow===6) th.classList.add('sat-col');
-    if(dow===0) th.classList.add('sun-col');
-    dRow.appendChild(th);
-  });
+  days.forEach(d=>{ const th=document.createElement('th'); th.textContent=d.getDate(); const ds=dateStr(d); const dow=d.getDay(); if(ds===ts) th.classList.add('today-col'); if(dow===6) th.classList.add('sat-col'); if(dow===0) th.classList.add('sun-col'); dRow.appendChild(th); });
   thead.appendChild(dRow);
-
-  // row3: day of week
   const wRow=document.createElement('tr');
   wRow.appendChild(Object.assign(document.createElement('th'),{className:'room-col'}));
-  days.forEach(d=>{
-    const th=document.createElement('th'); th.textContent=DOW[d.getDay()]; th.style.fontSize='10px';
-    const dow=d.getDay();
-    th.style.color=dow===0?'#ff9090':dow===6?'#88aaff':'rgba(255,255,255,0.38)';
-    wRow.appendChild(th);
-  });
+  days.forEach(d=>{ const th=document.createElement('th'); th.textContent=DOW[d.getDay()]; th.style.fontSize='10px'; const dow=d.getDay(); th.style.color=dow===0?'#ff9090':dow===6?'#88aaff':'rgba(255,255,255,0.38)'; wRow.appendChild(th); });
   thead.appendChild(wRow);
-
-  // body
-  const tbody=document.getElementById('tableBody'); tbody.innerHTML='';
-  let totalBooked=0;
-
+  const tbody=document.getElementById('tableBody'); tbody.innerHTML=''; let totalBooked=0;
   ROOMS.forEach(room=>{
     const tr=document.createElement('tr');
     const td0=document.createElement('td'); td0.className='room-name';
     td0.innerHTML=`<span class="room-type-label">${room.type}</span><span>${room.short}</span>`;
     tr.appendChild(td0);
-
-    days.forEach(d=>{
-      const ds=dateStr(d);
-      const isBooked=!!(booked[room.key+'|'+ds]);
-      const isToday=ds===todayStr; const dow=d.getDay();
-      const td=document.createElement('td'); td.className='date-cell';
-      if(isToday) td.classList.add('is-today');
-      if(dow===0||dow===6) td.classList.add('is-weekend');
-      if(isBooked){
-        td.classList.add('booked-cell');
-        td.style.background=room.bg;
-        const dot=document.createElement('div'); dot.className='cell-dot';
-        dot.style.color=room.text; dot.textContent='●';
-        td.appendChild(dot);
-        totalBooked++;
-      }
-      tr.appendChild(td);
-    });
+    days.forEach(d=>{ const ds=dateStr(d); const isBooked=!!(booked[room.key+'|'+ds]); const dow=d.getDay(); const td=document.createElement('td'); td.className='date-cell'; if(ds===ts) td.classList.add('is-today'); if(dow===0||dow===6) td.classList.add('is-weekend'); if(isBooked){ td.classList.add('booked-cell'); td.style.background=room.bg; const dot=document.createElement('div'); dot.className='cell-dot'; dot.style.color=room.text; dot.textContent='●'; td.appendChild(dot); totalBooked++; } tr.appendChild(td); });
     tbody.appendChild(tr);
   });
-
-  const todayFuture=bookings.filter(b=>b.checkout>todayStr);
-  document.getElementById('summaryBar').innerHTML=
-    `<span>표시 기간: <span class="summary-val">오늘부터 ${DAYS_SHOW}일</span></span>`+
-    `<span>예약 건수: <span class="summary-val">${todayFuture.length}건</span></span>`+
-    `<span>점유: <span class="summary-val">${totalBooked}셀</span></span>`;
+  const tf=bookings.filter(b=>b.checkout>ts);
+  document.getElementById('summaryBar').innerHTML=`<span>표시 기간: <span class="summary-val">오늘부터 ${DAYS_SHOW}일</span></span><span>예약 건수: <span class="summary-val">${tf.length}건</span></span><span>점유: <span class="summary-val">${totalBooked}셀</span></span>`;
 }
 
 function renderAll(){ renderLegend(); renderTable(); }
-function moveRange(dir){ viewOffset+=dir*7; renderAll(); } // 1주 단위 이동
+function moveRange(dir){ viewOffset+=dir*7; renderAll(); }
 function goToday(){ viewOffset=0; renderAll(); }
 
 function applyPaste(){
@@ -426,9 +277,7 @@ function applyPaste(){
   if(!text){ setStatus('붙여넣을 내용이 없습니다.',false); return; }
   const lines=text.split('\n').map(l=>l.split('\t'));
   let hRow=-1;
-  for(let i=0;i<lines.length;i++){
-    if(lines[i].some(c=>c.trim()==='체크인'||c.trim()==='체크아웃')){ hRow=i; break; }
-  }
+  for(let i=0;i<lines.length;i++){ if(lines[i].some(c=>c.trim()==='체크인'||c.trim()==='체크아웃')){ hRow=i; break; } }
   if(hRow<0){ setStatus('❌ 헤더를 찾지 못했습니다.',false); return; }
   const headers=lines[hRow].map(h=>h.trim());
   const roomIdx=headers.findIndex(h=>h==='객실 타입'||h.includes('객실'));
@@ -438,9 +287,7 @@ function applyPaste(){
   const parsed=[];
   for(let i=hRow+1;i<lines.length;i++){
     const row=lines[i]; if(!row||row.length<3) continue;
-    let room=(row[roomIdx]||'').trim();
-    let ci=(row[ciIdx]||'').trim();
-    let co=(row[coIdx]||'').trim();
+    let room=(row[roomIdx]||'').trim(); let ci=(row[ciIdx]||'').trim(); let co=(row[coIdx]||'').trim();
     if(!room||!ci||!co) continue;
     const cin=parseFloat(ci); const con=parseFloat(co);
     if(!isNaN(cin)&&cin>40000) ci=excelSerial(cin);
@@ -449,19 +296,34 @@ function applyPaste(){
     parsed.push({room,checkin:ci,checkout:co});
   }
   if(!parsed.length){ setStatus('❌ 파싱된 예약이 없습니다.',false); return; }
-  const todayStr=dateStr(today);
-  const filtered=parsed.filter(b=>b.checkout>todayStr);
+  const ts=dateStr(today);
+  const filtered=parsed.filter(b=>b.checkout>ts);
   const skipped=parsed.length-filtered.length;
   bookings=filtered;
   document.getElementById('pasteArea').value='';
-  setStatus(`✅ ${filtered.length}건 반영${skipped?` (과거 ${skipped}건 자동 제외)`:''}`,true);
+  setStatus(`✅ ${filtered.length}건 반영${skipped?` (과거 ${skipped}건 제외)`:''}`,true);
+  document.getElementById('downloadGuide').classList.add('show');
   renderAll();
 }
 
-function resetData(){ bookings=[]; setStatus('초기화되었습니다.',true); renderAll(); }
-function setStatus(msg,ok){
-  const el=document.getElementById('pasteStatus'); el.textContent=msg;
-  el.style.color=ok?'#2d7a4a':'#c0392b';
+function resetData(){ bookings=[]; document.getElementById('downloadGuide').classList.remove('show'); setStatus('초기화되었습니다.',true); renderAll(); }
+function setStatus(msg,ok){ const el=document.getElementById('pasteStatus'); el.textContent=msg; el.style.color=ok?'#2d7a4a':'#c0392b'; }
+
+function downloadHTML(){
+  // 현재 bookings 데이터를 HTML 소스에 주입해서 다운로드
+  const bookingsJson = JSON.stringify(bookings, null, 2);
+  const src = document.documentElement.outerHTML;
+  // bookings 배열 부분을 현재 데이터로 교체
+  const updated = src.replace(
+    /let bookings = \[[\s\S]*?\];/,
+    'let bookings = ' + bookingsJson + ';'
+  );
+  const blob = new Blob([updated], {type:'text/html;charset=utf-8'});
+  const a = document.createElement('a');
+  a.href = URL.createObjectURL(blob);
+  a.download = 'index.html';
+  a.click();
+  URL.revokeObjectURL(a.href);
 }
 
 renderAll();
